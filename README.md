@@ -1,6 +1,6 @@
 ## Polling App: React + Java Spring Boot (Maven) + MySQL
 
-This example shows how to leverage [Okteto](https://github.com/okteto/okteto) to develop a React + Java Spring Boot (Maven) + MySQL Sample App directly on Okteto Cloud. The Sample App is deployed using a [kustomize](https://github.com/okteto/polling/blob/master/okteto-pipeline.yml). It creates the following components:
+This example shows how to leverage `knts` to develop a React + Java Spring Boot (Maven) + MySQL Sample App directly on any Cloud. The Sample App is deployed using a `helm`. It creates the following components:
 
 - A *React* based **frontend**.
 - A Java Spring Boot **api**.
@@ -11,31 +11,21 @@ This example shows how to leverage [Okteto](https://github.com/okteto/okteto) to
 ![App Screenshot](screenshot.png)
 
 ## Tutorial
-
-- To develop on the **frontend** component:
-
+- Initialise the knts cli for the 1st use by the following command
 ```
-    $ okteto up frontend
-      ✓  Development container activated
-      ✓  Files synchronized
-         Namespace: githubid
-         Name:      frontend
-
-    Welcome to your development environment. Happy coding!
-    githubid:frontend okteto> yarn install
-    githubid:frontend okteto> yarn start
+knts init
 ```
-
-- To develop on the **api** component:
-
+- Up the Dev envinorment using the following command
 ```
-    $ okteto up api
-      ✓  Development container activated
-      ✓  Files synchronized
-         Namespace: githubid
-         Name:      api
-         Forward:   5005 -> 5005
-
-    Welcome to your development environment. Happy coding!
-    githubid:api okteto> mvn spring-boot:run
+knts up
+```
+- Once the useage of the perticular service is done, then down the dev container by the following command
+```
+ctrl + c
+ctrl + d
+knts down
+```
+- Once the usage of the dev environment is done, Destroy the environment using the following command
+```
+knts destroy
 ```
