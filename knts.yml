@@ -1,0 +1,39 @@
+name: polling
+
+# The build section defines how to build the images of your development environment
+build:
+  api:
+    context: api
+    dockerfile: api/Dockerfile
+    image: nithyap04/polling-api
+  frontend:
+    context: frontend
+    dockerfile: frontend/Dockerfile
+    image: nithyap04/polling-frontend
+
+# The deploy section defines how to deploy your development environment
+deploy:
+  - 'helm upgrade --install polling chart '
+
+
+# The dev section defines how to activate a development container
+
+
+dev:
+  api:
+    image: openjdk:8-jdk-alpine
+    command: sh
+    workdir: /usr/src/app
+    sync:
+      - api:/usr/src/app
+    forward:
+      - 8080:8080
+  frontend:
+    image: node:12.4.0-alpine
+    command: sh
+    workdir: /usr/src/app
+    sync:
+      - frontend:/usr/src/app
+    forward:
+      - 8081:80
+

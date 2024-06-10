@@ -1,0 +1,26 @@
+frontend: 
+  replicaCount: 1
+  image:
+    repository: nithyap04/polling-frontend
+    pullPolicy: IfNotPresent
+    tag: latest
+
+
+api: 
+  replicaCount: 1
+  image:
+    repository: nithyap04/polling-api
+    pullPolicy: IfNotPresent
+    tag: latest
+
+mysql: 
+  replicaCount: 1
+  image:
+    repository: mysql
+    pullPolicy: IfNotPresent
+    tag: "5.6" 
+        
+
+ingress:
+  className: "nginx"
+  host: polling.belltejlnkxenos9psss.azure-sathya.sathyap-devops.online
